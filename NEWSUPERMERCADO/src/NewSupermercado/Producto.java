@@ -16,6 +16,10 @@ public class Producto {
 		Categoria = categoria;
 	}
 	
+	public Producto() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public ArrayList <Producto>  productosIniciales() {
 		return null;
 		

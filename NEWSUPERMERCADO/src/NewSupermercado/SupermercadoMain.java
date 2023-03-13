@@ -11,14 +11,12 @@ public class SupermercadoMain {
 	static Scanner entrada = new Scanner(System.in);
 	static Supermercado Javadona = new Supermercado("Javadona");
 	static ArrayList <Producto> listaProductos = Javadona.productosIniciales();
-	public static void main(String [] args) {
-
-		
-		menuInicial();
-		
 	
-
+	
+	public static void main(String [] args) {
+		menuInicial();
 	}
+	
 	
 	public static void menuInicial() {	
 
@@ -62,7 +60,7 @@ public class SupermercadoMain {
 	
 	}
 	
-	
+//--------------------------------------------------- SECCIÓN TRABAJADOR ------------------------------------------------------------------
 	public static void menuTrabajador() {
 		
 		System.out.println("Introduce tu elección en el siguiente menú: ");
@@ -84,17 +82,40 @@ public class SupermercadoMain {
 			case 1: {
 				
 				menuOpcion1Trabajador();
-				
-				
 				break;
 			}
 			case 2: {
-						
+				
+				Producto productoUsuario = new Producto();
+				
+				System.out.println("Nombre del producto: ");
+				String productoNombre = entrada.next();
+				productoUsuario.setNombre(productoNombre);
+				System.out.println("Precio del producto: ");
+				int precioProducto = entrada.nextInt();
+				productoUsuario.setPrecio(precioProducto);
+				System.out.println("Categoría del producto: ");
+				String categoriaProducto = entrada.next();
+				productoUsuario.setCategoria(Categoria.valueOf(categoriaProducto));
+				
+				listaProductos.add(productoUsuario);
+				
+				for (int i = 0; i < listaProductos.size(); i++) {
+					System.out.println("Nombre:" + listaProductos.get(i).getNombre() + "\nPrecio:" + listaProductos.get(i).getPrecio() 
+							+ "\nCategoria:" + listaProductos.get(i).getCategoria() + "\n");
+				}
+				
 				break;
 					}
 			case 3: {
+				System.out.println("Introduzca el alimento que desea eliminar: ");
+				String alimentoEliminar = entrada.next();
 				
-				break;
+				Javadona.eliminarObjeto(listaProductos, alimentoEliminar);
+				for (int i = 0; i < listaProductos.size(); i++) {
+					System.out.println("Nombre:" + listaProductos.get(i).getNombre() + "\nPrecio:" + listaProductos.get(i).getPrecio() 
+							+ "\nCategoria:" + listaProductos.get(i).getCategoria() + "\n");
+				}
 			}
 			case 4: {
 				
@@ -109,24 +130,6 @@ public class SupermercadoMain {
 				menuTrabajador();
 			}
 	}
-	
-	public static void menuUsuario() {
-		
-		System.out.println("**********MENÚ**********");
-		System.out.println("1.Añadir productos del supermercado");
-		System.out.println("2.Añadir productos al carrito");
-		System.out.println("3.Mostrar carrito de la compra ordenado");
-		System.out.println("4.Consultar producto del carrito");
-		System.out.println("5.Cambiar un producto por otro");
-		System.out.println("6.Salir");
-		
-	}
-	
-
-	
-	
-	
-	
 	
 	public static void menuOpcion1Trabajador() {
 		System.out.println("Introduzca la categoría del producto: ");
@@ -198,6 +201,27 @@ public class SupermercadoMain {
 			}
 		}
 	}
+	
+//----------------------------------------------------- SECCION USUARIO ------------------------------------------------------------------
+	public static void menuUsuario() {
+		
+		System.out.println("**********MENÚ**********");
+		System.out.println("1.Añadir productos del supermercado");
+		System.out.println("2.Añadir productos al carrito");
+		System.out.println("3.Mostrar carrito de la compra ordenado");
+		System.out.println("4.Consultar producto del carrito");
+		System.out.println("5.Cambiar un producto por otro");
+		System.out.println("6.Salir");
+		
+	}
+	
+
+	
+	
+	
+	
+	
+	
 
 
 }
