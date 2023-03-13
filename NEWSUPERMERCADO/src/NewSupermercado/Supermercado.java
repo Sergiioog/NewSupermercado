@@ -18,10 +18,16 @@ public class Supermercado {
 		this.nombre = nombre;
 		this.productos = productosIniciales();
 	}
+	public Supermercado(ArrayList<Producto> productos, int precio) {
+		
+		this.productos = productos;
+		this.precio=precio;
+	}
 	
 	public ArrayList <Producto> productosIniciales (){
 		
-		ArrayList <Producto> productos = new ArrayList <Producto>();
+		//ArrayList <Producto> productos = new ArrayList <Producto>();
+		productos = new ArrayList <Producto>();
 		
 		
 		productos.add(new Producto("Lomo", 8.45, Categoria.CARNICERIA));
@@ -65,43 +71,24 @@ public class Supermercado {
 		
 	}
 	
-	/*public void agregarProducto(Producto producto) {
-		ArrayList <Producto> listaProductos = productosIniciales();
-		listaProductos.add(producto);
-	}*/
+	public void agregarProducto(Producto producto) {
+		
+		productos.add(producto);
+	}
 	
-	public static void eliminarObjeto(ArrayList<Producto> listaProductos, String alimento) {
-	    
-		for (int i = 0; i < listaProductos.size(); i++) {
-			  if (listaProductos.get(i).getNombre().equals(alimento)) {
-		            listaProductos.remove(alimento);
-		            System.out.println("Objeto eliminado correctamente");
-		        } else {
-		            System.out.println("El objeto no se encuentra en la lista");
-		        }
+	public void eliminarProducto(Producto alimentoEliminar) {
+		
+		
+		for (int i = 0; i < productos.size(); i++) {
+			if(productos.get(i).getNombre().equals(alimentoEliminar)) {
+				productos.remove(alimentoEliminar);
+				System.out.println("Producto eliminado correctamente.");
+			}
 		}
-        //REVISAR
-      
-    }
+			
 	
-	public List<Producto> getProductos() {
-		return productos;
 	}
 	
-	
-	public Supermercado(ArrayList<Producto> productos, int precio) {
-	
-		this.productos = productos;
-		this.precio=precio;
-	}
-	
-
-
-	
-	
-	public void setProductos(ArrayList<Producto> productos) {
-		this.productos = productos;
-	}
 	
 
 	public int getPrecio() {

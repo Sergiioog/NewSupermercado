@@ -16,9 +16,17 @@ public class Producto {
 		Categoria = categoria;
 	}
 	
+	
+
+	public Producto(String alimentoEliminar) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Producto() {
 		// TODO Auto-generated constructor stub
 	}
+
+
 
 	public ArrayList <Producto>  productosIniciales() {
 		return null;

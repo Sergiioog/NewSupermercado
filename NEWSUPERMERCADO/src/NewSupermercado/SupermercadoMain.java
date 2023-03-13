@@ -98,7 +98,9 @@ public class SupermercadoMain {
 				String categoriaProducto = entrada.next();
 				productoUsuario.setCategoria(Categoria.valueOf(categoriaProducto));
 				
-				listaProductos.add(productoUsuario);
+				Producto productoAnadir = new Producto(productoNombre, precioProducto, Categoria.valueOf(categoriaProducto));
+				Javadona.agregarProducto(productoAnadir);
+				
 				
 				for (int i = 0; i < listaProductos.size(); i++) {
 					System.out.println("Nombre:" + listaProductos.get(i).getNombre() + "\nPrecio:" + listaProductos.get(i).getPrecio() 
@@ -108,21 +110,30 @@ public class SupermercadoMain {
 				break;
 					}
 			case 3: {
-				System.out.println("Introduzca el alimento que desea eliminar: ");
-				String alimentoEliminar = entrada.next();
 				
-				Javadona.eliminarObjeto(listaProductos, alimentoEliminar);
+				//revisar
+				
+				System.out.println("Estos son los productos actuales: ");
+			
 				for (int i = 0; i < listaProductos.size(); i++) {
 					System.out.println("Nombre:" + listaProductos.get(i).getNombre() + "\nPrecio:" + listaProductos.get(i).getPrecio() 
 							+ "\nCategoria:" + listaProductos.get(i).getCategoria() + "\n");
 				}
-			}
+				
+				System.out.println("Introduce el alimento que quieres eliminar: ");
+				String alimentoEliminar = entrada.next();
+				Producto productoEliminar = new Producto(alimentoEliminar);
+				
+				Javadona.eliminarProducto(productoEliminar);
+			
+			}	
 			case 4: {
 				
 				break;
 			}
 			case 5: {
-				
+				System.out.println("¡Gracias por utilizar nuestra aplicación! Volviendo al menú inicial...");
+				menuInicial();
 				break;
 			}
 			default:
